@@ -1,9 +1,11 @@
 package com.cloverframework.application;
 
+import com.cloverframework.utils.KafkaSetting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -17,6 +19,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @ComponentScan("com.cloverframework")
 @EntityScan("com.cloverframework.entity")
 @EnableJpaRepositories("com.cloverframework.repository")
+@EnableConfigurationProperties({KafkaSetting.class})
 public class WebAppConfig extends WebMvcConfigurerAdapter{
 	@Autowired
 	private Crawler crawler;

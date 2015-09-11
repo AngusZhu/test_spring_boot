@@ -3,6 +3,9 @@ package com.cloverframework.web;
 
 import javax.servlet.http.HttpSession;
 
+import com.cloverframework.service.KafkaConsumer;
+import com.cloverframework.service.KafkaProducer;
+import com.cloverframework.utils.KafkaSetting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +31,9 @@ public class IndexController {
 	private HttpSession session;
 	@Autowired
 	private LoginService loginService;
+
+	@Autowired
+	private KafkaSetting kafkaSetting;
 	
 	/**
 	 * 跳转登录页面
@@ -37,6 +43,8 @@ public class IndexController {
 	 */
 	@RequestMapping(value={"login","/"},method=RequestMethod.GET)
 	public String login(){
+		new KafkaProducer(kafkaSetting.getTopic()).start();
+		new KafkaConsumer(kafkaSetting.getTopic()).start();
 		return "login.jsp";
 	}
 	

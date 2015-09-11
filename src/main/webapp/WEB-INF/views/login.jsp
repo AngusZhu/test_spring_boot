@@ -8,13 +8,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>用户登录</title>
+<title>用户登录jsp</title>
 </head>
 <!-- CSS件 -->
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/customer/login.css">
+<link rel="stylesheet" href="/css/sprite.css">
 <body>
 	<div class="container">
+		<div class="icon-Paper folded"></div>
 		<form class="form-signin" action="login" method="post">
 			<h2 class="form-signin-heading">Please sign in</h2>
 			<div class="error-code">${err_code}</div>
